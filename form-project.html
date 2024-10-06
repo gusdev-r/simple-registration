@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css-form.css">
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+  <title>Formulário</title>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+  <div class="form">
+    <form action="#">
+
+
+      <div class="login-button">
+        <button>
+          <a href="">Entrar</a>
+        </button>
+      </div>
+
+      <div class="form-header">
+        <div class="title">
+          <h1>Cadastre-se</h1>
+        </div>
+      </div>
+      
+      <div class="input-group">
+        <div class="input-box">
+          <label for="nomeCompleto">Nome completo:</label>
+          <input type="fullname" id="nomeCompleto" name="nomeCompleto" placeholder="Nome completo"> 
+        </div>
+        
+        <div class="input-box">
+          <label for="telefone">Telefone:</label>
+          <input type="phone-number" id="telefone" name="telefone" placeholder="Digite seu telefone" required>
+        </div> 
+    
+        <div class="input-box">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" placeholder="Digite seu E-mail" required>
+          <div id="email-error" class="error-message" style="display: none;">Este formato de email não é válido.</div>
+        </div>
+    
+        <div class="input-box">
+          <label for="cpfCnpj">Documento de identificação:</label>
+          <input type="personal-identification" id="cpfCnpj" name="cpfCnpj"  placeholder="CPF ou CNPJ" required>
+        </div>
+
+        <div class="input-box">
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+          <div id="senha-error" class="error-message" style="display: none;">A senha deve conter pelo menos um caractere especial e pelo menos 8 caracteres.</div>
+        </div>
+
+        <div class="input-box">
+          <label for="senha">Confirme sua senha:</label>
+          <input type="password" id="senha" name="senha" placeholder="Confirme sua senha" required>
+          <div id="senha-error" class="error-message" style="display: none;">A senha deve conter pelo menos um caractere especial e pelo menos 8 caracteres.</div>
+        </div>
+    
+        <div class="input-box">
+          <label for="usuario">Nome de Usuário:</label>
+          <input type="username" id="usuario" name="usuario" placeholder="Nome de usuário" required>
+        </div>
+      </div>
+      <div class="register-button">
+        <button> 
+          <a href="#"> Cadastrar </a> 
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#telefone').mask('(00) 0000-00009'); //Jquery Mask
+  });
+
+  $(document).ready(function() {
+    $('form').submit(function(event) {
+      var senha = $('#senha').val();
+      if (!senha.match(/^(?=.*[!@#$%^&*()-+=])(?=\S+$).{8,}$/)) { // Analisa a regex e envia a div de erro
+        $('#senha-error').show();
+        event.preventDefault(); // Evita que o formulário seja enviado
+      }
+    });
+  });
+
+  $(document).ready(function() {
+    $('form').submit(function(event) {
+      var senha = $('#email').val();
+      if (!senha.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) { // Analisa a regex e envia a div de erro
+        $('#email-error').show();
+        event.preventDefault(); // Evita que o formulário seja enviado
+      }
+    });
+  });
+
+</script>
+
+</body>
+</html>
+
